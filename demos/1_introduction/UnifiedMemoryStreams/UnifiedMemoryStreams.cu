@@ -46,7 +46,7 @@
 #include <cublas_v2.h>
 
 // utilities
-#include "helper_cuda.h"
+#include "../.././Common/helper_cuda.h"
 
 #if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
 // SRAND48 and DRAND48 don't exist on windows, but these are the equivalent

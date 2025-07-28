@@ -1,0 +1,21 @@
+# Run with 'bazel run //examples/cublas:main'
+load("@cuda_samples_bazel//cuda:defs.bzl", "cuda_library")
+
+cuda_library(
+    name = "UnifiedMemoryStreams",
+    srcs = ["UnifiedMemoryStreams.cu"],
+    hdrs = [
+        "helper_cuda.h",
+        "helper_string.h",
+    ],
+    
+    deps = ["@local_cuda//:cublas"],
+)
+
+cc_binary(
+    name = "main",
+    deps = [":UnifiedMemoryStreams"],
+)
+
+
+

@@ -20,21 +20,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-load("@cuda_samples_bazel//cuda:defs.bzl", "cuda_library")
-
-cuda_library(
-    name = "UnifiedMemoryStreams",
-    srcs = ["UnifiedMemoryStreams.cu"],
-    deps = [
-        "@local_cuda//:cublas",
-        "@cuda_demos//Common:helper_cuda",
-    ],
+cc_library(
+    name = "helper_string",
+    hdrs = ["helper_string.h"],
+    visibility = ["//visibility:public"],
 )
 
-cc_binary(
-    name = "main",
-    deps = [":UnifiedMemoryStreams"],
+cc_library(
+    name = "helper_cuda",
+    hdrs = ["helper_cuda.h"],
+    deps = [":helper_string"],
+    visibility = ["//visibility:public"],
 )
-
 
 
