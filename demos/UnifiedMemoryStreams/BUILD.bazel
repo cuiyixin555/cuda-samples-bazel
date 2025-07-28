@@ -1,5 +1,5 @@
 # Run with 'bazel run //examples/cublas:main'
-load("@rules_cuda//cuda:defs.bzl", "cuda_library")
+load("@cuda_samples_bazel//cuda:defs.bzl", "cuda_library")
 
 cuda_library(
     name = "UnifiedMemoryStreams",

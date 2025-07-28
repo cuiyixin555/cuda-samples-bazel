@@ -2,14 +2,14 @@
 
 def _requires_rules_are_enabled():
     return select({
-        "@rules_cuda//cuda:is_enabled": [],
-        "//conditions:default": ["@rules_cuda//cuda:rules_are_enabled"],
+        "@cuda_samples_bazel//cuda:is_enabled": [],
+        "//conditions:default": ["@cuda_samples_bazel//cuda:rules_are_enabled"],
     })
 
 def _requires_valid_toolchain_is_configured():
     return select({
-        "@rules_cuda//cuda:is_valid_toolchain_found": [],
-        "//conditions:default": ["@rules_cuda//cuda:valid_toolchain_is_configured"],
+        "@cuda_samples_bazel//cuda:is_valid_toolchain_found": [],
+        "//conditions:default": ["@cuda_samples_bazel//cuda:valid_toolchain_is_configured"],
     })
 
 def requires_cuda():

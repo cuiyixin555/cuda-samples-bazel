@@ -166,7 +166,7 @@ def _check_opts(opt):
         opt.startswith("--gpu-code") or opt.startswith("-code") or
         opt.startswith("--relocatable-device-code") or opt.startswith("-rdc") or
         opt in disallow_list_exact):
-        fail(opt, "is not allowed to be specified directly via copts of rules_cuda related rules")
+        fail(opt, "is not allowed to be specified directly via copts of cuda_samples_bazel related rules")
     return True
 
 def _get_cuda_archs_info(ctx):

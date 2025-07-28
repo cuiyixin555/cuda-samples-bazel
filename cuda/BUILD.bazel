@@ -19,7 +19,7 @@ toolchain_type(name = "toolchain_type")
 
 # Command line flag to set ":is_enabled" config setting.
 #
-# Set with --@rules_cuda//cuda:enable
+# Set with --@cuda_samples_bazel//cuda:enable
 bool_flag(
     name = "enable",
     build_setting_default = True,
@@ -27,7 +27,7 @@ bool_flag(
 
 # This config setting can be used for conditionally depend on cuda.
 #
-# Set with --@rules_cuda//cuda:enable
+# Set with --@cuda_samples_demos//cuda:enable
 config_setting(
     name = "is_enabled",
     flag_values = {":enable": "True"},
@@ -42,7 +42,7 @@ config_setting(
 #
 # Provides CudaArchsInfo of the list of archs to build.
 #
-# Example usage: --@rules_cuda//cuda:archs=sm_70,sm_75;sm_80,sm_86
+# Example usage: --@cuda_samples_bazel//cuda:archs=sm_70,sm_75;sm_80,sm_86
 #
 # See CudaArchsInfo for detailed grammar
 cuda_archs_flag(
@@ -86,7 +86,7 @@ repeatable_string_flag(
 #
 # This target is implicitly added as a dependency to cuda_library() targets.
 #
-# Example usage: --@rules_cuda//cuda:runtime=@local_cuda//:cuda_runtime_static
+# Example usage: --@cuda_samples_bazel//cuda:runtime=@local_cuda//:cuda_runtime_static
 label_flag(
     name = "runtime",
     build_setting_default = "@local_cuda//:cuda_runtime",

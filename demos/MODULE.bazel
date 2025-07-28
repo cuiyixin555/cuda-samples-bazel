@@ -1,16 +1,16 @@
 module(
-    name = "rules_cuda_examples",
+    name = "cuda_demos",
     version = "0.0.0",
     compatibility_level = 1,
 )
 
-bazel_dep(name = "rules_cuda", version = "0.2.3")
+bazel_dep(name = "cuda_samples_bazel", version = "0.2.3")
 local_path_override(
-    module_name = "rules_cuda",
+    module_name = "cuda_samples_bazel",
     path = "..",
 )
 
-cuda = use_extension("@rules_cuda//cuda:extensions.bzl", "toolchain")
+cuda = use_extension("@cuda_samples_bazel//cuda:extensions.bzl", "toolchain")
 cuda.local_toolchain(
     name = "local_cuda",
     toolkit_path = "",

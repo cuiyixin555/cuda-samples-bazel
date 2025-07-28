@@ -1,8 +1,8 @@
-workspace(name = "rules_cuda")
+workspace(name = "cuda_samples_bazel")
 
 local_repository(
-    name = "rules_cuda_examples",
-    path = "examples",
+    name = "cuda_demos",
+    path = "demos",
 )
 
 load("//cuda:repositories.bzl", "register_detected_cuda_toolchains", "rules_cuda_dependencies")

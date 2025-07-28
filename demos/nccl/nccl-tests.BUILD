@@ -1,5 +1,5 @@
-load("@rules_cuda//cuda:defs.bzl", "cuda_library")
-load("@rules_cuda_examples//nccl:nccl-tests.bzl", "nccl_tests_binary")
+load("@cuda_samples_bazel//cuda:defs.bzl", "cuda_library")
+load("@cuda_demos//nccl:nccl-tests.bzl", "nccl_tests_binary")
 
 # NOTE: all paths in this file relative to @nccl-tests repo root.
 

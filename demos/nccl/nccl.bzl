@@ -1,17 +1,17 @@
 load("@bazel_skylib//rules:copy_file.bzl", "copy_file")
-load("@rules_cuda//cuda:defs.bzl", "cuda_library", "cuda_objects")
+load("@cuda_samples_bazel//cuda:defs.bzl", "cuda_library", "cuda_objects")
 
 # NOTE: all paths in this file relative to @nccl repo root.
 
 def if_cuda_nvcc(if_true, if_false = []):
     return select({
-        "@rules_cuda//cuda:compiler_is_nvcc": if_true,
+        "@cuda_samples_bazel//cuda:compiler_is_nvcc": if_true,
         "//conditions:default": if_false,
     })
 
 def if_cuda_clang(if_true, if_false = []):
     return select({
-        "@rules_cuda//cuda:compiler_is_clang": if_true,
+        "@cuda_samples_bazel//cuda:compiler_is_clang": if_true,
         "//conditions:default": if_false,
     })
 

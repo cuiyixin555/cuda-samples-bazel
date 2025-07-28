@@ -1,5 +1,5 @@
 module(
-    name = "rules_cuda",
+    name = "cuda_samples_bazel",
     version = "0.0.0",
     compatibility_level = 1,
 )
@@ -7,7 +7,7 @@ module(
 bazel_dep(name = "bazel_skylib", version = "1.4.2")
 bazel_dep(name = "platforms", version = "0.0.6")
 
-cuda = use_extension("@rules_cuda//cuda:extensions.bzl", "toolchain")
+cuda = use_extension("@cuda_samples_bazel//cuda:extensions.bzl", "toolchain")
 cuda.local_toolchain(
     name = "local_cuda",
     toolkit_path = "",
@@ -20,8 +20,8 @@ register_toolchains(
     "@local_cuda//toolchain/disabled:disabled-local-toolchain",
 )
 
-bazel_dep(name = "rules_cuda_examples", dev_dependency = True)
+bazel_dep(name = "cuda_demos", dev_dependency = True)
 local_path_override(
-    module_name = "rules_cuda_examples",
-    path = "./examples",
+    module_name = "cuda_demos",
+    path = "./demos",
 )

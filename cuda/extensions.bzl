@@ -13,19 +13,19 @@ def _find_modules(module_ctx):
     for mod in module_ctx.modules:
         if mod.is_root:
             root = mod
-        if mod.name == "rules_cuda":
+        if mod.name == "cuda_samples_bazel":
             our_module = mod
     if root == None:
         root = our_module
     if our_module == None:
-        fail("Unable to find rules_cuda module")
+        fail("Unable to find cuda_samples_bazel module")
 
     return root, our_module
 
 def _init(module_ctx):
-    # Toolchain configuration is only allowed in the root module, or in rules_cuda.
-    root, rules_cuda = _find_modules(module_ctx)
-    toolchains = root.tags.local_toolchain or rules_cuda.tags.local_toolchain
+    # Toolchain configuration is only allowed in the root module, or in cuda_samples_bazel.
+    root, cuda_samples_bazel = _find_modules(module_ctx)
+    toolchains = root.tags.local_toolchain or cuda_samples_bazel.tags.local_toolchain
 
     registrations = {}
     for toolchain in toolchains:

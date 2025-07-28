@@ -1,7 +1,7 @@
 # This becomes the BUILD file for @local_cuda//toolchain/clang if LLVM is detected
 
 load(
-    "@rules_cuda//cuda:defs.bzl",
+    "@cuda_samples_bazel//cuda:defs.bzl",
     "cuda_toolchain",
     "cuda_toolkit",
     cuda_toolchain_config = "cuda_toolchain_config_clang",
@@ -33,10 +33,10 @@ cuda_toolchain(
 toolchain(
     name = "clang-local-toolchain",
     target_settings = [
-        "@rules_cuda//cuda:is_enabled",
-        "@rules_cuda//cuda:compiler_is_clang",
+        "@cuda_samples_bazel//cuda:is_enabled",
+        "@cuda_samples_bazel//cuda:compiler_is_clang",
     ],
     toolchain = ":clang-local",
-    toolchain_type = "@rules_cuda//cuda:toolchain_type",
+    toolchain_type = "@cuda_samples_bazel//cuda:toolchain_type",
     visibility = ["//visibility:public"],
 )

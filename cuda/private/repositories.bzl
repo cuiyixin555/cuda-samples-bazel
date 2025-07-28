@@ -62,11 +62,11 @@ def detect_cuda_toolkit(repository_ctx):
         cuda_path = None
 
     bin_ext = ".exe" if _is_windows(repository_ctx) else ""
-    nvcc = "@rules_cuda//cuda/dummy:nvcc"
-    nvlink = "@rules_cuda//cuda/dummy:nvlink"
-    link_stub = "@rules_cuda//cuda/dummy:link.stub"
-    bin2c = "@rules_cuda//cuda/dummy:bin2c"
-    fatbinary = "@rules_cuda//cuda/dummy:fatbinary"
+    nvcc = "@cuda_samples_bazel//cuda/dummy:nvcc"
+    nvlink = "@cuda_samples_bazel//cuda/dummy:nvlink"
+    link_stub = "@cuda_samples_bazel//cuda/dummy:link.stub"
+    bin2c = "@cuda_samples_bazel//cuda/dummy:bin2c"
+    fatbinary = "@cuda_samples_bazel//cuda/dummy:fatbinary"
     if cuda_path != None:
         if repository_ctx.path(cuda_path + "/bin/nvcc" + bin_ext).exists:
             nvcc = str(Label("@local_cuda//:cuda/bin/nvcc{}".format(bin_ext)))
@@ -198,7 +198,7 @@ local_cuda = repository_rule(
 )
 
 def rules_cuda_dependencies(toolkit_path = None):
-    """Populate the dependencies for rules_cuda. This will setup workspace dependencies (other bazel rules) and local toolchains.
+    """Populate the dependencies for cuda_samples_bazel. This will setup workspace dependencies (other bazel rules) and local toolchains.
 
     Args:
         toolkit_path: Optionally specify the path to CUDA toolkit. If not specified, it will be detected automatically.

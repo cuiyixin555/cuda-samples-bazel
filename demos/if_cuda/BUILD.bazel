@@ -1,4 +1,4 @@
-load("@rules_cuda//cuda:defs.bzl", "cuda_library", "requires_cuda")
+load("@cuda_samples_bazel//cuda:defs.bzl", "cuda_library", "requires_cuda")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -13,11 +13,11 @@ cc_binary(
     name = "main",
     srcs = ["main.cpp"],
     defines = [] + select({
-        "@rules_cuda//cuda:is_enabled": ["CUDA_ENABLED"],
+        "@cuda_samples_bazel//cuda:is_enabled": ["CUDA_ENABLED"],
         "//conditions:default": ["CUDA_DISABLED"],
     }),
     deps = [] + select({
-        "@rules_cuda//cuda:is_enabled": [":kernel"],
+        "@cuda_samples_bazel//cuda:is_enabled": [":kernel"],
         "//conditions:default": [],
     }),
 )

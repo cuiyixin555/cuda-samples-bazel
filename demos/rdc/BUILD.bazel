@@ -1,4 +1,4 @@
-load("@rules_cuda//cuda:defs.bzl", "cuda_library", "cuda_objects")
+load("@cuda_samples_bazel//cuda:defs.bzl", "cuda_library", "cuda_objects")
 
 cuda_objects(
     name = "a_objects",
