@@ -20,52 +20,21 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-cc_library(
-    name = "helper_string",
-    hdrs = ["helper_string.h"],
-    visibility = ["//visibility:public"],
-)
+load("@cuda_samples_bazel//cuda:defs.bzl", "cuda_library")
 
-cc_library(
-    name = "helper_cuda",
-    hdrs = ["helper_cuda.h"],
-    deps = [":helper_string"],
-    visibility = ["//visibility:public"],
-)
-
-cc_library(
-    name = "helper_image",
-    hdrs = ["helper_image.h"],
-    deps = [":helper_string"],
-    visibility = ["//visibility:public"],
-)
-
-cc_library(
-    name = "helper_timer",
-    hdrs = ["helper_timer.h"],
-    visibility = ["//visibility:public"],
-)
-
-cc_library(
-    name = "helper_functions",
-    hdrs = ["helper_functions.h"],
+cuda_library(
+    name = "topologyQuery",
+    srcs = ["topologyQuery.cu"],
     deps = [
-        ":helper_string",
-        ":helper_image",
-        ":helper_timer",
+        "@local_cuda//:cublas",
+        "@cuda_demos//Common:helper_cuda",
     ],
-    visibility = ["//visibility:public"],
 )
 
-cc_library(
-    name = "helper_cuda_drvapi",
-    hdrs = ["helper_cuda_drvapi.h"],
-    deps = [
-        ":helper_string",
-    ],
-    visibility = ["//visibility:public"],
+cc_binary(
+    name = "main",
+    deps = [":topologyQuery"],
 )
-
 
 
 

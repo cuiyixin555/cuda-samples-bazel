@@ -20,52 +20,23 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-cc_library(
-    name = "helper_string",
-    hdrs = ["helper_string.h"],
-    visibility = ["//visibility:public"],
-)
+load("@cuda_samples_bazel//cuda:defs.bzl", "cuda_library", "cuda_binary")
 
-cc_library(
-    name = "helper_cuda",
-    hdrs = ["helper_cuda.h"],
-    deps = [":helper_string"],
-    visibility = ["//visibility:public"],
-)
+package(default_visibility = ["//visibility:public"])
 
-cc_library(
-    name = "helper_image",
-    hdrs = ["helper_image.h"],
-    deps = [":helper_string"],
-    visibility = ["//visibility:public"],
-)
-
-cc_library(
-    name = "helper_timer",
-    hdrs = ["helper_timer.h"],
-    visibility = ["//visibility:public"],
-)
-
-cc_library(
-    name = "helper_functions",
-    hdrs = ["helper_functions.h"],
-    deps = [
-        ":helper_string",
-        ":helper_image",
-        ":helper_timer",
+cc_binary(
+    name = "deviceQueryDrv",
+    srcs = ["deviceQueryDrv.cpp"],
+    copts = [
+        "-I/usr/local/cuda/include",  # Path to cuda_runtime.h
+        "--cuda-gpu-arch=sm_60",      # GPU architecture
     ],
-    visibility = ["//visibility:public"],
-)
-
-cc_library(
-    name = "helper_cuda_drvapi",
-    hdrs = ["helper_cuda_drvapi.h"],
-    deps = [
-        ":helper_string",
+    linkopts = [
+        "-L/usr/local/cuda/lib64",
+        "-lcudart",                   # Link CUDA runtime
     ],
-    visibility = ["//visibility:public"],
+    deps = [
+        "@local_cuda//:cublas",
+        "@cuda_demos//Common:helper_cuda",
+    ],
 )
-
-
-
-
