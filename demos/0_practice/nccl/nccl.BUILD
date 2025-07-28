@@ -1,6 +1,6 @@
 load("@bazel_skylib//rules:expand_template.bzl", "expand_template")
 load("@cuda_samples_bazel//cuda:defs.bzl", "cuda_library", "cuda_objects")
-load("@cuda_demos//nccl:nccl.bzl", "if_cuda_clang", "if_cuda_nvcc", "nccl_primitive")
+load("@cuda_demos//0_practice/nccl:nccl.bzl", "if_cuda_clang", "if_cuda_nvcc", "nccl_primitive")
 
 # NOTE: all paths in this file relative to @nccl repo root.
 
