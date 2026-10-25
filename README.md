@@ -1,3 +1,5 @@
+![CUDA Samples Bazel](asserts/cuda-samples-bazel.png)
+
 # CUDA Samples Bazel Build
 This is CUDA Samples with Bazel Build
 
